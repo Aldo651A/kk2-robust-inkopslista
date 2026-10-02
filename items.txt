@@ -1,3 +1,4 @@
-15;Mjölk
-32;Bröd
-89;Ost
+95;Kaffe
+20;Mjölk
+30;Bröd
+10;Kaka

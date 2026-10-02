@@ -98,7 +98,8 @@ class ShoppingList
         }
         catch
         {
-            Console.WriteLine("index utanför en arrays gränser");
+            Console.WriteLine("iInlsäsningen mysslyckades");
+            throw;
         }
     }
 }

@@ -40,7 +40,8 @@ while (true)
         Console.Write("Namn: ");
         string name = Console.ReadLine();
         Console.Write("Pris: ");
-        int price = int.Parse(Console.ReadLine());
+        input = Console.ReadLine();  // Added input to allow the user to enter text or numbers
+        int.TryParse(input, out int price); // Replace int.parse with int .TryParse to prevent progarm from craching
         list.Add(new Item(name, price));
     }
     else if (choice == 2)

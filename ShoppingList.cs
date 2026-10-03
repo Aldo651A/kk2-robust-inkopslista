@@ -97,14 +97,14 @@ class ShoppingList
                 }
                     
                 string[] parts = line.Split(';');
-                items.Add(new Item(parts[1], int.Parse(parts[0])));
+                items.Add(new Item(parts[0], int.Parse(parts[1])));
  
             }
     
         }
         catch(FileNotFoundException)
         {
-            Console.WriteLine("Inläsningen mysslyckades - filen hittades inte");
+            Console.WriteLine("Inläsningen misslyckades - filen hittades inte");
         
         }
     }

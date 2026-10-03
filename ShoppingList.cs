@@ -93,7 +93,7 @@ class ShoppingList
             {
                 if (string.IsNullOrWhiteSpace(line))
                 {
-                    continue
+                    continue;
                 }
                     
                 string[] parts = line.Split(';');

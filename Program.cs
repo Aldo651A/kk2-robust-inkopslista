@@ -28,7 +28,10 @@ while (true)
     Console.WriteLine("4. Sök vara");
     Console.WriteLine("5. Avsluta");
     Console.Write("Välj: ");
-
+    
+    // Added string input to allow the user to enter text.
+    // Also, replace int.parse with int.TryParse to prevvent
+    // program from craching when text is entered.
     string input = Console.ReadLine();
     int.TryParse(input, out int choice);
 

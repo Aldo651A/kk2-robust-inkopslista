@@ -1,5 +1,21 @@
-ShoppingList list = new ShoppingList("items.txt");
-list.Load();
+
+ShoppingList list = null;
+
+try
+{
+    
+    list = new ShoppingList("items.txt");
+
+    Console.WriteLine("Trying to load the file");
+
+    list.Load();
+
+    Console.WriteLine("Failed to load the file");
+}
+catch
+{
+    Console.WriteLine("The file is missing");
+}
 
 while (true) 
 {

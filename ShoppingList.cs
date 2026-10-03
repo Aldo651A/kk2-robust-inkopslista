@@ -98,7 +98,7 @@ class ShoppingList
         }
         catch
         {
-            Console.WriteLine("iInlsäsningen mysslyckades");
+            Console.WriteLine("Failed to load");
             throw;
         }
     }

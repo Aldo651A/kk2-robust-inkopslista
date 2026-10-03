@@ -52,8 +52,8 @@ while (true)
         // Using an if-else statement makes them program safer
         if (int.TryParse(input, out int number))
         {
-            try
-            {
+            try // Here i am using a try-catch to catch the error
+            {   // The error is: index is out of range of the array
                 list.RemoveAt(number);
             }
             catch (ArgumentOutOfRangeException)

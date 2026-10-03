@@ -84,16 +84,26 @@ while (true)
     {
         Console.Write("Namn att söka efter: ");
         string wanted = Console.ReadLine();
-        Item found = list.Find(wanted);
 
-        if (found == null)
+        try
         {
-            Console.WriteLine("Varan finns inte i listan.");
+            
+            Item found = list.Find(wanted);
+
+            if (found == null)
+            {
+                Console.WriteLine("Varan finns inte i listan.");
+            }
+            else
+            {
+                Console.WriteLine($"Hittade: {found}");
+            }
         }
-        else
+        catch (Exception)
         {
-            Console.WriteLine($"Hittade: {found}");
+            Console.WriteLine("Något gick fel i sökningen");
         }
+    
     }
     else if (choice == 5)
     {

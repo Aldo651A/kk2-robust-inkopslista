@@ -6,15 +6,15 @@ try
     
     list = new ShoppingList("items.txt");
 
-    Console.WriteLine("Trying to load the file");
+    Console.WriteLine("Försöker ladda in filen");
 
     list.Load();
 
-    Console.WriteLine("Failed to load the file");
+    Console.WriteLine("Det gick inte att ladda filen");
 }
 catch
 {
-    Console.WriteLine("The file is missing");
+    Console.WriteLine("Filen saknas");
 }
 
 while (true) 

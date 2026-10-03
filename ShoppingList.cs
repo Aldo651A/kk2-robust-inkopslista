@@ -24,8 +24,10 @@ class ShoppingList
     public int Total()
     {
         int sum = 0;
-
-        for (int i = 1; i < items.Count; i++)
+        // When the loop was set to (int i = 1;)the program skipped
+        // the very first item in the list. We have to change loop  
+        // int to (int i = 0;)
+        for (int i = 0; i < items.Count; i++)
         {
             sum += items[i].Price;
         }
@@ -98,7 +100,7 @@ class ShoppingList
         }
         catch
         {
-            Console.WriteLine("Failed to load");
+            Console.WriteLine("Inläsningen mysslyckades");
             throw;
         }
     }

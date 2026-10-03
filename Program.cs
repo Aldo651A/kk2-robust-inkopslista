@@ -1,4 +1,3 @@
-
 ShoppingList list = null;
 list = new ShoppingList("aldos_items.txt");
 list.Load();
@@ -30,7 +29,9 @@ while (true)
 
         Console.Write("Pris: ");
         input = Console.ReadLine();  // Added input to allow the user to enter text or numbers
-
+        // This condition ensures the program won't crach
+        // if the user enters text instead of a number
+        // Using an if-else statement makes them program safer
         if (int.TryParse(input, out int price)) 
         {
            list.Add(new Item(name, price));
@@ -38,7 +39,7 @@ while (true)
         }
         else
         {
-            Console.WriteLine("Fel! Ange priset i siffror. Varankommer inta att läggas till");
+            Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
         }
             
     }

@@ -61,7 +61,14 @@ while (true)
 
         if (int.TryParse(input, out int number))
         {
-            list.RemoveAt(number -1);
+            try
+            {
+                list.RemoveAt(number);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                Console.WriteLine("Fel! nummeret finns inte i listan");
+            }
         }
         else
         {

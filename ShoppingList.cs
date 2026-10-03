@@ -26,7 +26,7 @@ class ShoppingList
         int sum = 0;
         // When the loop was set to (int i = 1;)the program skipped
         // the very first item in the list. We have to change loop  
-        // int to (int i = 0;)
+        // int to (int i = 0;) Now we will get the right total sum
         for (int i = 0; i < items.Count; i++)
         {
             sum += items[i].Price;
@@ -52,7 +52,9 @@ class ShoppingList
     public void Print()
     {
         for (int i = 0; i < items.Count; i++)
-        {   // H
+        {   // When you wrote to the console, the product name 
+            // was missing. Thats was because item's Name and Price
+            // were missing. 
             Console.WriteLine($"{i + 1}.{items[i].Name} {items[i].Price}");
         }
 
@@ -83,9 +85,9 @@ class ShoppingList
     // Reads the file back into the list.
     public void Load()
     {
-        try
-        {
-            
+        try // Since the program cannot find or access the items.txt file
+        {   // it crashed immediately. I had to implement a try-catch block
+            // to allow the program o start.
             string text = File.ReadAllText(path);
             string[] lines = text.Split('\n');
 

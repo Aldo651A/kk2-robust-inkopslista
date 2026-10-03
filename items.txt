@@ -1,4 +1,1 @@
-95;Kaffe
-20;Mjölk
-30;Bröd
-10;Kaka
+95;Kaffe

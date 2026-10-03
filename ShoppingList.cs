@@ -97,7 +97,8 @@ class ShoppingList
                 }
                     
                 string[] parts = line.Split(';');
-                items.Add(new Item(parts[0], int.Parse(parts[1])));
+                Console.WriteLine($"DEBUG - Pris: {parts[0]}, Namn: {parts[1]}");
+                items.Add(new Item(parts[1], int.Parse(parts[0])));
  
             }
     
@@ -105,7 +106,11 @@ class ShoppingList
         catch(FileNotFoundException)
         {
             Console.WriteLine("Inläsningen misslyckades - filen hittades inte");
-        
         }
+        catch(Exception ex)
+        {
+            Console.WriteLine($"Det blev ett ANNAT fel inuti Load:{ ex.Message} ");
+        }
+
     }
 }

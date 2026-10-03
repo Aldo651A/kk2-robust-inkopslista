@@ -4,7 +4,7 @@ ShoppingList list = null;
 try
 {
     
-    list = new ShoppingList("items.txt");
+    list = new ShoppingList("aldos_items.txt");
 
     Console.WriteLine("Försöker ladda in filen");
 
@@ -50,7 +50,7 @@ while (true)
         }
         else
         {
-            Console.WriteLine("Fel! Ange priset i siffror. Varankommer inta att löggas till");
+            Console.WriteLine("Fel! Ange priset i siffror. Varankommer inta att läggas till");
         }
             
     }

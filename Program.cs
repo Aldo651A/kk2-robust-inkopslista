@@ -29,7 +29,7 @@ while (true)
 
         Console.Write("Pris: ");
         input = Console.ReadLine();  // Added input to allow the user to enter text or numbers
-        // This condition ensures the program won't crach
+        // This condition ensures the program won't crash
         // if the user enters text instead of a number
         // Using an if-else statement makes them program safer
         if (int.TryParse(input, out int price)) 
@@ -47,7 +47,9 @@ while (true)
     {
         Console.Write("Nummer: ");
         input = Console.ReadLine();
-
+        // This condition ensures the program won't crash
+        // if the user enters text instead of a number
+        // Using an if-else statement makes them program safer
         if (int.TryParse(input, out int number))
         {
             try

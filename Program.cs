@@ -57,8 +57,17 @@ while (true)
     else if (choice == 2)
     {
         Console.Write("Nummer: ");
-        int number = int.Parse(Console.ReadLine());
-        list.RemoveAt(number);
+        input = Console.ReadLine();
+
+        if (int.TryParse(input, out int number))
+        {
+            list.RemoveAt(number);
+        }
+        else
+        {
+            Console.WriteLine("Fel! Ange ett tal i siffror");
+        }
+
     }
     else if (choice == 3)
     {

@@ -53,7 +53,7 @@ class ShoppingList
     {
         for (int i = 0; i < items.Count; i++)
         {
-            Console.WriteLine($"{i + 1}. {items[i]}");
+            Console.WriteLine($"{i + 1}.{items[i].Name} {items[i].Price}");
         }
 
         Console.WriteLine($"Totalt: {Total()} kr");
@@ -71,7 +71,7 @@ class ShoppingList
 
         try
         {
-            File.WriteAllText(path, string.Join("\r\n", lines) + "\r\n");
+            File.WriteAllText(path, string.Join("\n", lines) + "\n");
         }
         catch
         {
@@ -97,7 +97,7 @@ class ShoppingList
                 }
                     
                 string[] parts = line.Split(';');
-                Console.WriteLine($"DEBUG - Pris: {parts[0]}, Namn: {parts[1]}");
+                
                 items.Add(new Item(parts[1], int.Parse(parts[0])));
  
             }

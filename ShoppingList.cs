@@ -98,10 +98,10 @@ class ShoppingList
             }
     
         }
-        catch
+        catch(FileNotFoundException)
         {
-            Console.WriteLine("Inläsningen mysslyckades");
-            throw;
+            Console.WriteLine("Inläsningen mysslyckades - filen hittades inte");
+        
         }
     }
 }

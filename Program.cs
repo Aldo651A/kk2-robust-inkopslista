@@ -76,8 +76,8 @@ while (true)
         Console.Write("Namn att söka efter: ");
         string wanted = Console.ReadLine();
 
-        try
-        {
+        try // Här använder jag också ett try-catch fär att
+        {   // fånga ett undantag som gär att programet rasar
             
             Item found = list.Find(wanted);
 
@@ -90,7 +90,7 @@ while (true)
                 Console.WriteLine($"Hittade: {found}");
             }
         }
-        catch (Exception)
+        catch (NullReferenceException)
         {
             Console.WriteLine("Något gick fel i sökningen");
         }

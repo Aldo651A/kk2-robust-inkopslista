@@ -92,7 +92,9 @@ class ShoppingList
             string[] lines = text.Split('\n');
 
             foreach (string line in lines)
-            {
+            {   // Here we detect if the line is empty and triggers continue
+                // which means skip directly to the next line and ignore the rest 
+                // of the code below, saving the program from crashing
                 if (string.IsNullOrWhiteSpace(line))
                 {
                     continue;

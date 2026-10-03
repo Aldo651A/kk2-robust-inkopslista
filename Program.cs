@@ -39,10 +39,20 @@ while (true)
     {
         Console.Write("Namn: ");
         string name = Console.ReadLine();
+
         Console.Write("Pris: ");
         input = Console.ReadLine();  // Added input to allow the user to enter text or numbers
-        int.TryParse(input, out int price); // Replace int.parse with int .TryParse to prevent progarm from craching
-        list.Add(new Item(name, price));
+
+        if (int.TryParse(input, out int price)) 
+        {
+           list.Add(new Item(name, price));
+           Console.WriteLine("Varan har lagts till");
+        }
+        else
+        {
+            Console.WriteLine("Fel! Ange priset i siffror. Varankommer inta att löggas till");
+        }
+            
     }
     else if (choice == 2)
     {

@@ -1,21 +1,9 @@
 
 ShoppingList list = null;
+list = new ShoppingList("aldos_items.txt");
+list.Load();
 
-try
-{
-    
-    list = new ShoppingList("aldos_items.txt");
 
-    Console.WriteLine("Försöker ladda in filen");
-
-    list.Load();
-
-    Console.WriteLine("Det gick inte att ladda filen");
-}
-catch
-{
-    Console.WriteLine("Filen saknas");
-}
 
 while (true) 
 {

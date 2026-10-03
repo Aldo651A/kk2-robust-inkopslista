@@ -61,7 +61,7 @@ while (true)
 
         if (int.TryParse(input, out int number))
         {
-            list.RemoveAt(number);
+            list.RemoveAt(number -1);
         }
         else
         {

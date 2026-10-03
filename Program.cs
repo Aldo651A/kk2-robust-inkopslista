@@ -76,9 +76,9 @@ while (true)
         Console.Write("Namn att söka efter: ");
         string wanted = Console.ReadLine();
 
-        try // Här använder jag också ett try-catch fär att
-        {   // fånga ett undantag som gär att programet rasar
-            
+        try // Here i am using a try-catch to catch
+        {   // the error, because the code is trying to use 
+            // a reference that is null.
             Item found = list.Find(wanted);
 
             if (found == null)

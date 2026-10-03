@@ -52,7 +52,7 @@ class ShoppingList
     public void Print()
     {
         for (int i = 0; i < items.Count; i++)
-        {
+        {   // H
             Console.WriteLine($"{i + 1}.{items[i].Name} {items[i].Price}");
         }
 

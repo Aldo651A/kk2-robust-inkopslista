@@ -18,7 +18,7 @@ while (true)
     
     // Added string input to allow the user to enter text.
     // Also, replace int.parse with int.TryParse to prevvent
-    // program from craching when text is entered.
+    // program from craching when text is entered. hej hej testsr
     string input = Console.ReadLine();
     int.TryParse(input, out int choice);
 

@@ -8,10 +8,12 @@ class ShoppingList
     {
         this.path = path;
     }
-    // 
+    // Converted this into a public bool to set a price limit 
+    //  on the items. Now the method must return either true or false.
     public bool Add(Item item)
     {
-        // 
+        // Checks if within the budget limit. 
+        // Returns false if exceeded, otherwise true.
         if (Total() + item.Price > BudgetLimit)
         {
         return false;

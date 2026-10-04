@@ -32,16 +32,20 @@ while (true)
         // This condition ensures the program won't crash
         // if the user enters text instead of a number
         // Using an if-else statement makes them program safer
-        if (int.TryParse(input, out int price)) 
+        if (!int.TryParse(input, out int price)) 
         {
-           list.Add(new Item(name, price));
-           Console.WriteLine("Varan har lagts till");
+           Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
+           continue;
         }
-        else
+        
+        if (!list.Add(new Item(name, price)))
         {
-            Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
+            Console.WriteLine("Fel! Varan är alldelse för dyrt. Du sprängde budgettaket! ");
+            continue;
         }
             
+        Console.WriteLine("Varan har lagts till");
+   
     }
     else if (choice == 2)
     {

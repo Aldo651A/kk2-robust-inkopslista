@@ -28,19 +28,20 @@ while (true)
         string name = Console.ReadLine();
 
         Console.Write("Pris: ");
-        input = Console.ReadLine();  // Added input to allow the user to enter text or numbers
-        // This condition ensures the program won't crash
-        // if the user enters text instead of a number
-        // Using an if-else statement makes them program safer
+        input = Console.ReadLine();  // Allow the user to enter text or numbers.
+        // This guard clause ensures the program won't crash 
+        // if the user enters text instead of a number.
+        // Using int.TryParse makes the input validation safe.
         if (!int.TryParse(input, out int price)) 
         {
            Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
            continue;
         }
 
-        try
-        {
-            
+        try // If the name is empty or price is negative, the throw in Item.cs triggers, 
+        {   // aborting the try block and jumping straight to the catch blocks.
+
+            // Verifies that the item is valid and fits the budget. If exceeded, the item is not added.
             if (!list.Add(new Item(name, price)))
             {
                 Console.WriteLine($"Fel! Varan är alldelse för dyrt. Du sprängde budgettaket {list.BudgetLimit} kr ");

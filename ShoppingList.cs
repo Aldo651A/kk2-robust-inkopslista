@@ -4,7 +4,7 @@ class ShoppingList
     private List<Item> items = new List<Item>();
     private string path;
 
-    public ShoppingList(string path)
+    public ShoppingList(string path) 
     {
         this.path = path;
     }
@@ -18,6 +18,11 @@ class ShoppingList
     public void RemoveAt(int number)
     {
         items.RemoveAt(number - 1);
+    }
+
+    public int BudgetLimit
+    {
+        get; set;
     }
 
     // Adds up the price of every item on the list.

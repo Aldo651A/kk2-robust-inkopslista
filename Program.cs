@@ -37,15 +37,31 @@ while (true)
            Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
            continue;
         }
-        
-        if (!list.Add(new Item(name, price)))
+
+        try
         {
-            Console.WriteLine("Fel! Varan är alldelse för dyrt. Du sprängde budgettaket! ");
+            
+            if (!list.Add(new Item(name, price)))
+            {
+                Console.WriteLine($"Fel! Varan är alldelse för dyrt. Du sprängde budgettaket {list.BudgetLimit} kr ");
+                continue;
+            }
+
+            Console.WriteLine("Varan har lagts till");
+        
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Console.WriteLine("Fel Priset får inte vara negativ. ");
             continue;
         }
-            
-        Console.WriteLine("Varan har lagts till");
-   
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Fel! Raden får inte vara tomt ");
+            continue;
+        }
+        
+             
     }
     else if (choice == 2)
     {

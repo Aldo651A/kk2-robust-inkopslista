@@ -27,10 +27,10 @@ class ShoppingList
         items.RemoveAt(number - 1);
     }
 
-    public int BudgetLimit
-    {
-        get; set;
-    }
+    public int BudgetLimit { get; set; } = 300;
+    
+        
+    
 
     // Adds up the price of every item on the list.
     public int Total()

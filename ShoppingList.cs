@@ -29,7 +29,7 @@ class ShoppingList
     {
         items.RemoveAt(number - 1);
     }
-
+    // Defines the total budget limit for the shopping list.
     public int BudgetLimit { get; set; } = 300;
     
         

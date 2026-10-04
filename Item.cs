@@ -8,7 +8,7 @@ class Item
     {
         if (price < 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(price), "Priset kan inte vara negativt");
+            throw new ArgumentOutOfRangeException(nameof(price), "Fel! Priset kan inte vara negativt. ");
         }
 
         if (string.IsNullOrWhiteSpace(name))

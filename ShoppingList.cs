@@ -4,6 +4,9 @@ class ShoppingList
     private List<Item> items = new List<Item>();
     private string path;
 
+    // Defines the total budget limit for the shopping list.
+    public int BudgetLimit { get; set; } = 300;
+
     public ShoppingList(string path) 
     {
         this.path = path;
@@ -29,12 +32,7 @@ class ShoppingList
     {
         items.RemoveAt(number - 1);
     }
-    // Defines the total budget limit for the shopping list.
-    public int BudgetLimit { get; set; } = 300;
     
-        
-    
-
     // Adds up the price of every item on the list.
     public int Total()
     {

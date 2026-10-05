@@ -35,3 +35,18 @@ Om vi dessutom tittar på utbildningen fram tills nu, så använder ni själva o
 
 Det kanske var lite fegt av mig att inte använda throw, men det kändes helt enkelt bättre med bool. Jag har dock en känsla av att jag kommer att stöta på throw längre fram och då även lära mig den metoden ordentligt.
 
+
+## Vad behöver Program.cs göra med svaret?
+
+När vi lägger till en vara hamnar den i metoden public bool Add(Item item). Här kontrollerar metoden om den nya varan ryms inom budgeten. Om varan överskrider gränsen returneras false, och om den är inom gränsen returneras true.
+
+Nu tar Program.cs över i metoden för menyvalet if (choice == 1). Här skriver användaren in varans namn och pris.
+
+Sedan kontrollerar TryParse om man har angett priset med siffror. Om man inte har skrivit siffror får användaren ett felmeddelande.
+
+Därefter tar ett try-block över för att kontrollera om namnet är tomt eller om priset är negativt. Om så är fallet aktiveras throw i Item.cs, vilket avbryter try-blocket och hoppar direkt över till catch. Om man har skrivit ett negativt pris eller utelämnat namnet, får användaren ett meddelande om detta.
+
+Om allt är ok, kontrolleras detta i nästa steg av if (list.Add(new Item(name, price))).
+
+Om varan är inom budgetgränsen läggs den till i listan. Om varan däremot är för dyr, får du ett meddelande om att du sprängde budgeten och varan läggs inte till.
+

@@ -25,4 +25,13 @@ eftersom den visade en stor ruta. Där man kunde läsa felmeddelande och jag upp
 - Den sista felet upptäckte jag, också när jag gick igenom kravlistan. När jag valde nummer 4 sök varan. Då fick jag svaret "Varan finns inte i listan" inte finns" men jag hade ju varan med i listan. denna kund man se klart och tydlig. Jag fångade felet med en try-catch nu kunde programmet söka varan. Men programmet kraschade inte av detta fel. Felet här är att koden försöker att använda en referens/variabel som inte finns alltså null.
 
 
+## Del 2-Designval:Hur Add säger nej när taket överskrids, och varför du valde så.
+
+I Shopping.cs så valde jag signaturen public bool Add(Item item). Anledningen till att jag gjorde detta är helt enkelt att vi har använt denna booleska metod ganska ofta. Därför kändes det rätt att välja just bool.
+
+Det kan liknas vid att någon skulle be mig att välja en loop som snurrar hela tiden; som nybörjare i programmering skulle jag lätt säga en while-loop, förutsatt att den passar in i metoden. Dessutom tycker jag att man hanterar if-satser ganska bra vid det här laget – kanske inte perfekt, men tillräckligt bra för att kunna jobba med dem, och dessa ingår ju naturligt när man arbetar med bool.
+
+Om vi dessutom tittar på utbildningen fram tills nu, så använder ni själva ofta if-satser med true eller false. Men den största anledningen till att jag valde bool var nog att jag tittade på uppgiften ”Kodexempel C# Bankkonto” och mitt eget bankkonto-projekt. Det var det som gjorde att jag bestämde mig för det booleska uttrycket.
+
+Det kanske var lite fegt av mig att inte använda throw, men det kändes helt enkelt bättre med bool. Jag har dock en känsla av att jag kommer att stöta på throw längre fram och då även lära mig den metoden ordentligt.
 

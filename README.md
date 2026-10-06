@@ -52,4 +52,4 @@ Om varan är inom budgetgränsen läggs den till i listan. Om varan däremot är
 
 
 
-[Klicka här för att öppna klassdiagrammet (PDF)](./klassdiagram.pdf)
+[Klicka här för att öppna klassdiagrammet (PDF)](./Klassdiagram.pdf)

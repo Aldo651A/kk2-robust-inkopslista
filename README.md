@@ -50,3 +50,6 @@ Om allt är ok, kontrolleras detta i nästa steg av if (list.Add(new Item(name, 
 
 Om varan är inom budgetgränsen läggs den till i listan. Om varan däremot är för dyr, får du ett meddelande om att du sprängde budgeten och varan läggs inte till.
 
+
+
+[Klicka här för att öppna klassdiagrammet (PDF)](./klassdiagram.pdf)

@@ -60,12 +60,14 @@ while (true)
             Console.WriteLine("Varan har lagts till");
         
         }
+        // A method argument is out of a valid range.
         catch (ArgumentOutOfRangeException)
         {
             Console.WriteLine("Fel Priset får inte vara negativ. ");
             continue;
         }
-        catch (ArgumentException)
+        // A method receives a value it does not accept.
+        catch (ArgumentException) 
         {
             Console.WriteLine("Fel! Raden får inte vara tomt ");
             continue;
@@ -86,6 +88,7 @@ while (true)
             {   // The error is: index is out of range of the array
                 list.RemoveAt(number);
             }
+            // A method argument is out of a valid range.
             catch (ArgumentOutOfRangeException)
             {
                 Console.WriteLine("Fel! nummeret finns inte i listan");

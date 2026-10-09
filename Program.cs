@@ -135,6 +135,6 @@ while (true)
     }
     else
     {
-        Console.WriteLine("Fel! ange et numer mellan 1 och 5 ");
+        Console.WriteLine("Fel! Välj ett nummer i menyn! mellan 1 och 5.");
     }
 }

@@ -1,4 +1,4 @@
 10;Kaka
-95;Kaffe 
 30;Bröd
-7;Banan
+20;Läsk
+95;Kaffe

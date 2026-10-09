@@ -139,7 +139,7 @@ class ShoppingList
         // it stops the program from crashing.
         catch(IndexOutOfRangeException) 
         {
-            Console.WriteLine("Inläsning misslyckades - ilen har felaktig format");
+            Console.WriteLine("Inläsning misslyckades - filen har felaktig format");
         }
 
     }

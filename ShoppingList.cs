@@ -89,13 +89,13 @@ class ShoppingList
             File.WriteAllText(path, string.Join("\n", lines) + "\n");
             Console.WriteLine("Listan är sparad.");
         }
+        // If we have a problem with eh hardware or the file is locked,
+        // the program won't crash.
         catch (IOException)
         {
             Console.WriteLine("Tyvärr! Det gick inta att spara listan");
         }
-
-        
-        
+    
     }
 
     // Reads the file back into the list.
@@ -117,9 +117,12 @@ class ShoppingList
                 }
                     
                 string[] parts = line.Split(';');
-
+                // if the user makes a mistake in aldos_items.txt.
+                // The program will start and load everything it can.
                 if (!int.TryParse(parts[0], out int price))
                 {
+                    // If we encounter a damaged file, then continue will jump 
+                    // to the next loop. This saves the program from crashing.
                     continue;
                 }
                 
@@ -128,13 +131,15 @@ class ShoppingList
             }
     
         }
-        catch(FileNotFoundException)
+        catch(FileNotFoundException) // The file couldn't be found.
         {
             Console.WriteLine("Inläsningen misslyckades - filen hittades inte");
         }
-        catch(Exception ex)
+        // If the index is not in range or the file is damaged
+        // it stops the program from crashing.
+        catch(IndexOutOfRangeException) 
         {
-            Console.WriteLine($"Det blev ett ANNAT fel inuti Load:{ ex.Message} ");
+            Console.WriteLine("Inläsning misslyckades - ilen har felaktig format");
         }
 
     }

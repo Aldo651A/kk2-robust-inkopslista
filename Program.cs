@@ -1,3 +1,5 @@
+using System.Globalization;
+
 ShoppingList list = null;
 list = new ShoppingList("aldos_items.txt");
 list.Load();
@@ -25,23 +27,51 @@ while (true)
     if (choice == 1)
     {
         Console.Write("Namn: ");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine(); // Allow the user to enter text
+        // Prevent the user from entering numbers
+        // and force the user to write a name with letters.
+        if (!name.All(char.IsLetter))
+        {
+            Console.WriteLine("Fel! Ange namet med bokstäver");
+            continue;
+        }
 
         Console.Write("Pris: ");
-        input = Console.ReadLine();  // Added input to allow the user to enter text or numbers
-        // This condition ensures the program won't crash
-        // if the user enters text instead of a number
-        // Using an if-else statement makes them program safer
-        if (int.TryParse(input, out int price)) 
+        input = Console.ReadLine();  // Allow the user to enter text or numbers.
+        // This guard clause ensures the program won't crash 
+        // if the user enters text instead of a number.
+        // Using int.TryParse makes the input validation safe.
+        if (!int.TryParse(input, out int price)) 
         {
-           list.Add(new Item(name, price));
-           Console.WriteLine("Varan har lagts till");
+           Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
+           continue;
         }
-        else
+
+        try // If the name is empty or price is negative, the throw in Item.cs triggers, 
+        {   // aborting the try block and jumping straight to the catch blocks.
+
+            // Verifies that the item is valid and fits the budget. If exceeded, the item is not added.
+            if (!list.Add(new Item(name, price)))
+            {
+                Console.WriteLine($"Fel! Varan är alldelse för dyrt. Du sprängde budgettaket {list.BudgetLimit} kr ");
+                continue;
+            }
+
+            Console.WriteLine("Varan har lagts till");
+        
+        }
+        catch (ArgumentOutOfRangeException)
         {
-            Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
+            Console.WriteLine("Fel Priset får inte vara negativ. ");
+            continue;
         }
-            
+        catch (ArgumentException)
+        {
+            Console.WriteLine("Fel! Raden får inte vara tomt ");
+            continue;
+        }
+        
+             
     }
     else if (choice == 2)
     {

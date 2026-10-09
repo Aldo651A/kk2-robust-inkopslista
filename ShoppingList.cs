@@ -4,14 +4,27 @@ class ShoppingList
     private List<Item> items = new List<Item>();
     private string path;
 
-    public ShoppingList(string path)
+    // Defines the total budget limit for the shopping list.
+    public int BudgetLimit { get; set; } = 300;
+
+    public ShoppingList(string path) 
     {
         this.path = path;
     }
-
-    public void Add(Item item)
+    // Converted this into a public bool to set a price limit 
+    //  on the items. Now the method must return either true or false.
+    public bool Add(Item item)
     {
+        // Checks if within the budget limit. 
+        // Returns false if exceeded, otherwise true.
+        if (Total() + item.Price > BudgetLimit)
+        {
+        return false;
+        }
+        
         items.Add(item);
+        
+        return true;
     }
 
     // Removes the item the user sees as number 1, 2, 3 ...
@@ -19,7 +32,7 @@ class ShoppingList
     {
         items.RemoveAt(number - 1);
     }
-
+    
     // Adds up the price of every item on the list.
     public int Total()
     {
@@ -82,6 +95,7 @@ class ShoppingList
         }
 
         
+        
     }
 
     // Reads the file back into the list.
@@ -89,7 +103,7 @@ class ShoppingList
     {
         try // Since the program cannot find or access the items.txt file
         {   // it crashed immediately. I had to implement a try-catch block
-            // to allow the program o start.
+            // to allow the program to start.
             string text = File.ReadAllText(path);
             string[] lines = text.Split('\n');
 

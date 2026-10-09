@@ -46,14 +46,12 @@ while (true)
            Console.WriteLine("Fel! Ange priset i siffror. Varan kommer inta att läggas till");
            continue;
         }
-
         try // If the name is empty or price is negative, the throw in Item.cs triggers, 
         {   // aborting the try block and jumping straight to the catch blocks.
-
             // Verifies that the item is valid and fits the budget. If exceeded, the item is not added.
             if (!list.Add(new Item(name, price)))
             {
-                Console.WriteLine($"Fel! Varan är alldelse för dyrt. Du sprängde budgettaket {list.BudgetLimit} kr ");
+                Console.WriteLine($"Fel! Varan är alldeles för dyr. Du sprängde budgettaket {list.BudgetLimit} kr ");
                 continue;
             }
 
@@ -134,5 +132,9 @@ while (true)
     else if (choice == 5)
     {
         break;
+    }
+    else
+    {
+        Console.WriteLine("Fel! ange et numer mellan 1 och 5 ");
     }
 }

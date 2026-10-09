@@ -87,10 +87,11 @@ class ShoppingList
         try
         {
             File.WriteAllText(path, string.Join("\n", lines) + "\n");
-        }
-        catch
-        {
             Console.WriteLine("Listan är sparad.");
+        }
+        catch (IOException)
+        {
+            Console.WriteLine("Tyvärr! Det gick inta att spara listan");
         }
 
         

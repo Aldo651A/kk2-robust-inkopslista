@@ -90,9 +90,10 @@ class ShoppingList
         }
         catch
         {
+            Console.WriteLine("Listan är sparad.");
         }
 
-        Console.WriteLine("Listan är sparad.");
+        
     }
 
     // Reads the file back into the list.
@@ -100,7 +101,7 @@ class ShoppingList
     {
         try // Since the program cannot find or access the items.txt file
         {   // it crashed immediately. I had to implement a try-catch block
-            // to allow the program o start.
+            // to allow the program to start.
             string text = File.ReadAllText(path);
             string[] lines = text.Split('\n');
 

@@ -1,3 +1,5 @@
+using System.Globalization;
+
 ShoppingList list = null;
 list = new ShoppingList("aldos_items.txt");
 list.Load();
@@ -25,7 +27,14 @@ while (true)
     if (choice == 1)
     {
         Console.Write("Namn: ");
-        string name = Console.ReadLine();
+        string name = Console.ReadLine(); // Allow the user to enter text
+        // Prevent the user from entering numbers
+        // and force the user to write a name with letters.
+        if (!name.All(char.IsLetter))
+        {
+            Console.WriteLine("Fel! Ange namet med bokstäver");
+            continue;
+        }
 
         Console.Write("Pris: ");
         input = Console.ReadLine();  // Allow the user to enter text or numbers.

@@ -123,6 +123,8 @@ while (true)
                 Console.WriteLine($"Hittade: {found}");
             }
         }
+        // Means that the program tries to use a 
+        // variable or an object that is null (empty).
         catch (NullReferenceException)
         {
             Console.WriteLine("Något gick fel i sökningen");

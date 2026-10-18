@@ -125,9 +125,20 @@ class ShoppingList
                     // to the next loop. This saves the program from crashing.
                     continue;
                 }
-                
-                items.Add(new Item(parts[1], price));
- 
+
+                try
+                {
+                    items.Add(new Item(parts[1], price));
+                }
+                catch (ArgumentOutOfRangeException)
+                {
+                    Console.WriteLine("Hoppade över en vara i filen: Priset var negativ. ");
+                }
+                catch (ArgumentException)
+                {
+                    Console.WriteLine("Hoppade äver en vara i filen: Namnet var tomt. ");
+                }
+            
             }
     
         }

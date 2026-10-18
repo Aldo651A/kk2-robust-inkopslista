@@ -2,3 +2,4 @@
 30;Bröd
 20;Läsk
 95;Kaffe
+-15;Mjölk

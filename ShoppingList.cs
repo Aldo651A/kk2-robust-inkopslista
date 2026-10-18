@@ -53,7 +53,7 @@ class ShoppingList
     {
         foreach (Item item in items)
         {
-            if (item.Name.Contains(name))
+            if (item.Name.ToLower().Contains(name.ToLower()))
             {
                 return item;
             }

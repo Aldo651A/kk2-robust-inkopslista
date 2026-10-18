@@ -28,14 +28,7 @@ while (true)
     {
         Console.Write("Namn: ");
         string name = Console.ReadLine(); // Allow the user to enter text
-        // Prevent the user from entering numbers
-        // and force the user to write a name with letters.
-        if (!name.All(char.IsLetter))
-        {
-            Console.WriteLine("Fel! Ange namet med bokstäver");
-            continue;
-        }
-
+        
         Console.Write("Pris: ");
         input = Console.ReadLine();  // Allow the user to enter text or numbers.
         // This guard clause ensures the program won't crash 

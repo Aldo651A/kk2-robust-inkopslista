@@ -4,27 +4,50 @@
 ### De sex felen: Vad hände, varför, hur du löste det. 
 
 
-- När jag startade programmet så kraschade den direkt så jag läste felmeddelandet och bestämde mig efter en stund att göra en try-catch 
-Men jag satte den innanför foreach vilket var fel. Jag öppnade och läste
-Felhantering i C# och det gick bättre. Nu fick jag igång programmet.
+# Del 1 - Felrapport (De sex felen i startkoden)
 
-- Nu när jag fick igång programmet så försökte jag läsa igenom programet 
-för att hitta fel men jag lyckades bara hitta eller rättare sagt misstänka ett fel och detta efter en lång stund och det var i ShoppingList.cs metoden public int total, så var (int i = 1;) fel tyckte jag. Jag ville nu ha bekräftelse på min misstanke, så jag började använda debug. På denna viss började jag upptäcka andra fel.
+- Efter en noggrann felsökning med hjälp av VS Codes debugger har jag identifierat och åtgärdat de sex felen i startkoden:
 
-- Debug avslöjade direkt att (int choice = int.parse.Console.ReadLine())
-eftersom den visade en stor ruta. Där man kunde läsa felmeddelande och jag uppmärksammade, om jag minns rätt (FormatException). Detta visade sig vara den andra felet som orsakar krasch. Sedan kom jag att tänka på (TryParse används för inmatning som förväntas kunna bli fel i int. TryParse) Så jag lade till en (string input) och (int, parse) tog jag bort och lade till (int.TryParse.).
+# Fel 1: Krasch vid uppstart om filen saknas (FileNotFoundException)
 
-- Sedan upptckta jag att i (else if (choice == 1)) så hade vi samma fel. Det konstiga var att debug inte kunde komma ner hit. Fast jag hade satt ut breakpoint. Jag rådfrågade AI, som jag kör med Benjamins prompt och den bekräftade felet. Så jag gjorde om den också. Men det räckte inte så jag fick även lägga till en som kallad innästlad if-sats för att säkerhetställa att programmet inte rasade om man skrev flera siffror som t ex 87, 897, 7898 osv, Nu hade jag hittat tredje felet som orsakar krasch.
+- Vad som hände: När jag startade programmet för första gången kraschade det omedelbart.
+- Varför: Koden försökte läsa in filen aldos_items.txt med File.ReadAllText() innan filen över huvud taget var skapad.
+- Lösning: Jag kapslade in filinläsningen i en try-catch som fångar FileNotFoundException. Nu startar programmet utan problem med en tom lista om filen saknas.
 
-- Nu när jag kände mig mer säkert så tog jag tag i tatal summan som blev fel. Jag tittade i metoden public int total, så var (int i = 1;) igen. Men denna gången ändrade jag felet. Nu blev total summan rätt. Men jag upptäckte att produktlistan, alltås namnet på varan var borta. Detta var ett nytt fel.
+# Fel 2: Krasch vid bokstäver i huvudmenyn (FormatException)
 
-- När det gäller produktnamnet så tog det ganska lång tid att lösa. Jag försökta med allt undersökte flera metoder utan framgång, så jag råd frågade AI och den kom på olika förslag som jag redan hade använt men även nya. Tills slut så hittade vi felet. Detta fel finns under ShoppingList.cs metoden public void print. Det saknades (item Name och Price) mellan måsvingarna under for loopen. Jag skrev in dessa och listan visade nu produktnamnet.
+- Vad som hände: Om jag skrev bokstäver istället för siffror i huvudmenyn kraschade programmet.
+- Varför: Debuggern avslöjade direkt att koden använde en osäker int.Parse(Console.ReadLine()) som inte kan hantera text.
+- Lösning: Jag bytte ut int.Parse mot en säker int.TryParse(). Om användaren anger ett ogiltigt val visas nu ett felmeddelande istället för att programmet kraschar.
 
-- När jag kontrollerade kravlistan för godkänd. Upptäckte jag dem två sista felen den ena var att jag skulle "Ta bort varan" och när jag valde denna så rasade programmet. Först trodde jag att det var en enkel sak som att ändra int. parse till en TryParse vilket jag gjorde, men nej. Även här fick jag lägga in en innästlad if-sats men det hjälpte inte. Så jag gjorde det väldigt enkel och la i en try-catch som fångade ArgumentOutOfRangeException och detta gjorde det möjligt för att ta bort varan. Om nu detta stämmer, så är felet att listan har ett visst antal element och vi väljer att ta bort ett index som inte finns. Då rasar programmet.
+# Fel 3: Krasch vid bokstäver i pris-inmatningen (FormatException)
 
-- Den näst sista felet upptäckte jag, också när jag gick igenom kravlistan. När jag valde nummer 4 sök varan. Då fick jag svaret "Varan finns inte i listan" inte finns" men jag hade ju varan med i listan. denna kund man se klart och tydlig. Jag fångade felet med en try-catch nu kunde programmet söka varan. Men programmet kraschade inte av detta fel. Felet här är att koden försöker att använda en referens/variabel som inte finns alltså null.
+- Vad som hände: Samma krasch uppstod inuti menyval 1 (lägga till vara) om man angav priset med bokstäver.
+- Varför: Koden använde även här en osäker int.Parse. Det intressanta var att min debugger inte kunde komma ner till min breakpoint här först. Det berodde på att programmet hann krascha redan i huvudmenyn (Fel 2) innan koden ens nådde hit. När jag väl lagat menyn kunde jag felsöka nästa steg.
+- Lösning: Jag ändrade även denna till int.TryParse() och lade till en if-sats för att säkerställa att programmet hanterar inmatningen robust.
 
-- Hittade ytterligare ett fel i aldos_items.txt när jag skrev en rad med en negativ produkt -15;Mjälk då kraschade programmet. Jag rättade till det med en try catch inuti foreach loopen i Load, Nu hoppar programmet över skadade och toma rader.
+# Fel 4: Krasch vid borttagning av en vara som inte finns (ArgumentOutOfRangeException)
+
+- Vad som hände: När jag valde menyval 2 för att ta bort en vara och angav ett nummer som inte fanns i listan (t.ex. rad 5 i en lista med 2 varor), så kraschade programmet.
+- Varför: Koden försökte skicka in ett ogiltigt index till items.RemoveAt(), vilket ligger utanför listans faktiska storlek.
+- Lösning: Jag lade till en try-catch runt list.RemoveAt(number) som fångar ArgumentOutOfRangeException. Nu kraschar inte programmet, utan ger istället användaren ett tydligt felmeddelande.
+
+# Fel 5: Dolt fel – Felaktig totalsumma och osynliga produktnamn
+
+- Vad som hände: Totalsumman räknade fel (den hoppade över den allra första varan) och produktlistan på skärmen var helt tom på namn och pris – bara siffrorna (1., 2...) syntes.
+- Varför: Detta var det fel som "dolde att något gick fel". Varorna fanns i minnet, men loopen i Total() startade felaktigt på index 1 (int i = 1;) istället för 0. Dessutom saknades variablerna {items[i].Name} och {items[i].Price} helt inuti stränginterpolationen i Print().
+- Lösning: Jag ändrade loopen till int i = 0; och skrev in namnet och priset i Print()-metodens Console.WriteLine. Nu syns varorna och summan stämmer.
+
+# Fel 6: Fel resultat vid sökning (Skiftlägeskänslighet / NullReferenceException)
+
+- Vad som hände: När jag sökte efter en vara (menyval 4) som jag tydligt såg i listan, påstod programmet att den inte fanns, eller så uppstod problem med att koden försökte läsa ett objekt som var null.
+- Varför: Detta var felet som "gav fel resultat utan att krascha". C# är skiftlägeskänsligt. Sökte jag på "kaffe" hittades inte "Kaffe", vilket gjorde att sökmetoden returnerade null. När programmet sedan försökte läsa egenskaper från det tomma resultatet uppstod ett referensfel.
+- Lösning: Jag lade till en try-catch för NullReferenceException i menyn, och i själva sökfunktionen (Find) lade jag till .ToLower() på både varans namn och söksträngen så att sökningen helt ignorerar stora och små bokstäver.
+
+# Del 2 - Robusthetssäkring av filinläsning (Följdfel)
+
+- När jag i uppgiftens andra del uppdaterade Item-klassen till att kasta undantag om ett pris är negativt, upptäckte jag att programmet kraschade vid uppstart om jag manuellt skrev en rad med ett negativt pris (t.ex. -15;Mjölk) direkt i textfilen.
+Filinläsningen var inte förberedd på att Item-konstruktorn nu skyddar sig själv. Jag löste detta genom att lägga en try-catch inuti själva foreach-loopen i Load(). Nu hoppar programmet smidigt över skadade rader och startar ändå.
 
 
 ## Del 2-Designval:Hur Add säger nej när taket överskrids, och varför du valde så.

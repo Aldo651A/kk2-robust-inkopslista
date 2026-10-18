@@ -127,7 +127,7 @@ class ShoppingList
                 }
 
                 try
-                {
+                {   // try and to catch negative prices and empty txt files
                     items.Add(new Item(parts[1], price));
                 }
                 catch (ArgumentOutOfRangeException)

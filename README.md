@@ -22,7 +22,9 @@ eftersom den visade en stor ruta. Där man kunde läsa felmeddelande och jag upp
 
 - När jag kontrollerade kravlistan för godkänd. Upptäckte jag dem två sista felen den ena var att jag skulle "Ta bort varan" och när jag valde denna så rasade programmet. Först trodde jag att det var en enkel sak som att ändra int. parse till en TryParse vilket jag gjorde, men nej. Även här fick jag lägga in en innästlad if-sats men det hjälpte inte. Så jag gjorde det väldigt enkel och la i en try-catch som fångade ArgumentOutOfRangeException och detta gjorde det möjligt för att ta bort varan. Om nu detta stämmer, så är felet att listan har ett visst antal element och vi väljer att ta bort ett index som inte finns. Då rasar programmet.
 
-- Den sista felet upptäckte jag, också när jag gick igenom kravlistan. När jag valde nummer 4 sök varan. Då fick jag svaret "Varan finns inte i listan" inte finns" men jag hade ju varan med i listan. denna kund man se klart och tydlig. Jag fångade felet med en try-catch nu kunde programmet söka varan. Men programmet kraschade inte av detta fel. Felet här är att koden försöker att använda en referens/variabel som inte finns alltså null.
+- Den näst sista felet upptäckte jag, också när jag gick igenom kravlistan. När jag valde nummer 4 sök varan. Då fick jag svaret "Varan finns inte i listan" inte finns" men jag hade ju varan med i listan. denna kund man se klart och tydlig. Jag fångade felet med en try-catch nu kunde programmet söka varan. Men programmet kraschade inte av detta fel. Felet här är att koden försöker att använda en referens/variabel som inte finns alltså null.
+
+- Hittade ytterligare ett fel i aldos_items.txt när jag skrev en rad med en negativ produkt -15;Mjälk då kraschade programmet. Jag rättade till det med en try catch inuti foreach loopen i Load, Nu hoppar programmet över skadade och toma rader.
 
 
 ## Del 2-Designval:Hur Add säger nej när taket överskrids, och varför du valde så.
